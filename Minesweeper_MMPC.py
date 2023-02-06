@@ -1,7 +1,6 @@
 from operator import is_
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import random
 from PIL import Image, ImageTk
 import time
@@ -88,8 +87,13 @@ game_menu.add_command(
 )
 
 help_menu.add_command(
-    label='About',
+    label='About',flag_1
     command = lambda: tk.messagebox.showinfo('About', about_info)
+)
+
+help_menu.add_command(
+    label='Quit',
+    command = lambda: root.destroy()
 )
 
 # add the Game menu to the menubar
@@ -592,14 +596,7 @@ unclicked_cell= 0  #count how many cells left needed to be open
 
 init_all()
 
-#print_mine_data()
-
-#print("\n\n\n")
-
-#print_board_data()
 thread = threading.Thread(target = counting)
 thread.start()
-def on_closing():
-    root.destroy()
-root.protocol("WM_DELETE_WINDOW", on_closing)
+root.protocol("WM_DELETE_WINDOW", lambda: root.destroy())
 root.mainloop()
