@@ -394,6 +394,22 @@ def cell_clicked_left(x,y):
                 win()
                 stop_timer()
                 return 0
+        else:
+            flag_num = 0
+            dx = [-1, -1, -1, 0, 0, 1, 1, 1]
+            dy = [-1, 0, 1, -1, 1, -1, 0, 1]
+            for i in range(8):
+                nx = x + dx[i]
+                ny = y + dy[i]
+                if nx < 0 or nx >= size_x or ny < 0 or ny >= size_y: continue
+                flag_num += flag_data[y + dy[i]][x + dx[i]]
+            if board_data[y][x] - 100 == flag_num:
+                for i in range(8):
+                    nx = x + dx[i]
+                    ny = y + dy[i]
+                    if nx < 0 or nx >= size_x or ny < 0 or ny >= size_y: continue
+                    if board_data[ny][nx] < 100 and flag_data[ny][nx] == 0:
+                        cell_clicked_left(nx, ny)
     #else:
         #print("autoclear out of bound, nothing is done")
 
