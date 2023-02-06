@@ -32,6 +32,12 @@ title_1 = ttk.Label(
     )
 title_1.pack(side = "top")
 
+# stop the whole app
+def endApp():
+    global root, stop_thread
+    root.destroy()
+    stop_thread = 1
+
 new_width = tk.StringVar()
 new_width.set('9')
 new_height = tk.StringVar()
@@ -87,13 +93,13 @@ game_menu.add_command(
 )
 
 help_menu.add_command(
-    label='About',flag_1
+    label='About',
     command = lambda: tk.messagebox.showinfo('About', about_info)
 )
 
 help_menu.add_command(
     label='Quit',
-    command = lambda: root.destroy()
+    command = endApp
 )
 
 # add the Game menu to the menubar
@@ -168,6 +174,7 @@ mine_counter.place(x = 5, y = 4) #tested left position
 
 second = 0    
 is_counting = 0
+stop_thread = 0
 
 timer = tk.Label(   #計時器(右)
     display_frame,
@@ -209,6 +216,7 @@ def counting():
     while 1:
         time.sleep(0.01);
         if is_counting: timer.config(text = str(round(time.time() - second)).zfill(3))
+        if stop_thread: exit(0)
 
 #------------Display Panel-----------------------
 
@@ -598,5 +606,5 @@ init_all()
 
 thread = threading.Thread(target = counting)
 thread.start()
-root.protocol("WM_DELETE_WINDOW", lambda: root.destroy())
+root.protocol("WM_DELETE_WINDOW", endApp)
 root.mainloop()
