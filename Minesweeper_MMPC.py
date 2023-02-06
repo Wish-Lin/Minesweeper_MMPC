@@ -1,10 +1,9 @@
 from operator import is_
 import tkinter as tk
+from tkinter import ttk
+from tkinter import messagebox
 import random
 from PIL import Image, ImageTk
-from tkinter import ttk
-from tkinter import Menu
-from tkinter import messagebox
 import time
 import threading
 
@@ -61,14 +60,14 @@ def expert_setup():
     set_new_grid()
 
 # create main menubar
-menubar = Menu(root)
+menubar = tk.Menu(root)
 root.config(menu=menubar)
 
 # create the game menu
-game_menu = Menu(menubar, tearoff = False)
+game_menu = tk.Menu(menubar, tearoff = False)
 
 # create the help menu
-help_menu = Menu(menubar, tearoff = False)
+help_menu = tk.Menu(menubar, tearoff = False)
 
 # add "easy" option to Game menu
 game_menu.add_command(
@@ -90,7 +89,7 @@ game_menu.add_command(
 
 help_menu.add_command(
     label='About',
-    command = lambda: messagebox.showinfo('About', about_info)
+    command = lambda: tk.messagebox.showinfo('About', about_info)
 )
 
 # add the Game menu to the menubar
@@ -600,4 +599,7 @@ init_all()
 #print_board_data()
 thread = threading.Thread(target = counting)
 thread.start()
+def on_closing():
+    root.destroy()
+root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
