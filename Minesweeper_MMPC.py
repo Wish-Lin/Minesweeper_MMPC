@@ -14,6 +14,14 @@ mine_number = 10
 unclicked_cell = 0
 mine_count = 0
 
+about_info = """Author: 2023 Wei-Hsu Lin & Mu-En Chiu
+
+A classic Minesweeper clone that has up to 10 mines per cell
+
+Cycle flag #1~#10 by right-clicking mouse repetitively on same cell
+
+License: MIT"""
+
 root = tk.Tk()
 root.title('Minesweeper MMPC')
 root.geometry('380x410')
@@ -82,7 +90,7 @@ game_menu.add_command(
 
 help_menu.add_command(
     label='About',
-    command = lambda: messagebox.showinfo('About', "Author: 2023 Wei-Hsu Lin\n\nA classic Minesweeper clone except that it can have up to 10 mines per cell.\n\nCycle flag #1~#10 by right-clicking mouse repetitively on same cell.")
+    command = lambda: messagebox.showinfo('About', about_info)
 )
 
 # add the Game menu to the menubar
@@ -104,7 +112,7 @@ face_dead = tk.PhotoImage(file='res/face_dead.png')
 face_glasses = tk.PhotoImage(file='res/face_glasses.png')
 
 gray_square = ImageTk.PhotoImage(Image.open('res/gray_square.png').resize((16,16)))   #transparent square as background for cell, to prevent row or column collapse.
-flag_1 = ImageTk.PhotoImage(Image.open('res/flag_1.png').resize((16,16)))         #resize the flags from 30x30 to 16x16
+flag_1 = ImageTk.PhotoImage(Image.open('res/flag_1.png').resize((16,16)))             #resize the flags from 30x30 to 16x16
 flag_2 = ImageTk.PhotoImage(Image.open('res/flag_2.png').resize((16,16)))
 flag_3 = ImageTk.PhotoImage(Image.open('res/flag_3.png').resize((16,16)))
 flag_4 = ImageTk.PhotoImage(Image.open('res/flag_4.png').resize((16,16)))
