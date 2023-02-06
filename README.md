@@ -1,6 +1,6 @@
 # Minesweeper_MMPC
-A classic Minesweeper clone that has up to 10 mines per cell
+A minesweeper game that has up to 10 mines per cell (MMPC = Multiple Mines Per Cell)
 
-This is just a crappy school project, hope you like it.
+This is just a crappy school project, hope you liked it.
 
 Author: Wei-Hsu Lin & Mu-En Chiu
