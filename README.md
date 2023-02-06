@@ -1,2 +1,6 @@
 # Minesweeper_MMPC
-A multi-mined version of the classic minesweeper
+A classic Minesweeper clone that has up to 10 mines per cell
+
+This is just a crappy school project, hope you like it.
+
+Author: Wei-Hsu Lin & Mu-En Chiu
