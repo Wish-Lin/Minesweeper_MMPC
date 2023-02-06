@@ -18,7 +18,7 @@ root = tk.Tk()
 root.title('Minesweeper MMPC')
 root.geometry('380x410')
 root.resizable(False, False)
-root.iconbitmap('icon.ico')
+root.iconbitmap('res/icon.ico')
 title_1 = ttk.Label(
     root,
     text='Minesweeper MMPC',
@@ -82,7 +82,7 @@ game_menu.add_command(
 
 help_menu.add_command(
     label='About',
-    command = lambda: messagebox.showinfo('About', "Creator: Lin Wei-Hsu 2022\n\nA classic Minesweeper replica except that it has up to 10 mines per cell.\n\nAll operations identical to the original Minesweeper.\n\nCycle flag #1~#10 by right-clicking mouse repetitively on same cell.")
+    command = lambda: messagebox.showinfo('About', "Author: 2023 Wei-Hsu Lin\n\nA classic Minesweeper clone except that it can have up to 10 mines per cell.\n\nCycle flag #1~#10 by right-clicking mouse repetitively on same cell.")
 )
 
 # add the Game menu to the menubar
@@ -99,24 +99,24 @@ menubar.add_cascade(
 
 
 
-face_smile = tk.PhotoImage(file='face_smile.png')
-face_dead = tk.PhotoImage(file='face_dead.png')
-face_glasses = tk.PhotoImage(file='face_glasses.png')
+face_smile = tk.PhotoImage(file='res/face_smile.png')
+face_dead = tk.PhotoImage(file='res/face_dead.png')
+face_glasses = tk.PhotoImage(file='res/face_glasses.png')
 
-gray_square = ImageTk.PhotoImage(Image.open('gray_square.png').resize((16,16)))   #transparent square as background for cell, to prevent row or column collapse.
-flag_1 = ImageTk.PhotoImage(Image.open('flag_1.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_2 = ImageTk.PhotoImage(Image.open('flag_2.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_3 = ImageTk.PhotoImage(Image.open('flag_3.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_4 = ImageTk.PhotoImage(Image.open('flag_4.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_5 = ImageTk.PhotoImage(Image.open('flag_5.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_6 = ImageTk.PhotoImage(Image.open('flag_6.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_7 = ImageTk.PhotoImage(Image.open('flag_7.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_8 = ImageTk.PhotoImage(Image.open('flag_8.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_9 = ImageTk.PhotoImage(Image.open('flag_9.png').resize((16,16)))   #resize the flags from 30x30 to 16x16
-flag_10 = ImageTk.PhotoImage(Image.open('flag_10.png').resize((16,16))) #resize the flags from 30x30 to 16x16
+gray_square = ImageTk.PhotoImage(Image.open('res/gray_square.png').resize((16,16)))   #transparent square as background for cell, to prevent row or column collapse.
+flag_1 = ImageTk.PhotoImage(Image.open('res/flag_1.png').resize((16,16)))         #resize the flags from 30x30 to 16x16
+flag_2 = ImageTk.PhotoImage(Image.open('res/flag_2.png').resize((16,16)))
+flag_3 = ImageTk.PhotoImage(Image.open('res/flag_3.png').resize((16,16)))
+flag_4 = ImageTk.PhotoImage(Image.open('res/flag_4.png').resize((16,16)))
+flag_5 = ImageTk.PhotoImage(Image.open('res/flag_5.png').resize((16,16)))
+flag_6 = ImageTk.PhotoImage(Image.open('res/flag_6.png').resize((16,16)))
+flag_7 = ImageTk.PhotoImage(Image.open('res/flag_7.png').resize((16,16)))
+flag_8 = ImageTk.PhotoImage(Image.open('res/flag_8.png').resize((16,16)))
+flag_9 = ImageTk.PhotoImage(Image.open('res/flag_9.png').resize((16,16)))
+flag_10 = ImageTk.PhotoImage(Image.open('res/flag_10.png').resize((16,16)))
 
-mine_image = ImageTk.PhotoImage(Image.open('mine.png').resize((16,16))) #resize mine PNG to 16x16
-clicked_mine_image = ImageTk.PhotoImage(Image.open('clicked_mine.png').resize((16,16))) #resize clicked_mine PNG to 16x16
+mine_img = ImageTk.PhotoImage(Image.open('res/mine.png').resize((16,16))) #resize mine PNG to 16x16
+clicked_mine_img = ImageTk.PhotoImage(Image.open('res/clicked_mine.png').resize((16,16))) #resize clicked_mine PNG to 16x16
 
 #------------Display Panel-----------------------
 display_frame = ttk.Frame(  #display frmae
@@ -446,9 +446,9 @@ def mine_exploded(x,y):
             cells[i][j].unbind("<Button-3>") #make the cells unclickable
             if mine_data[i][j] != 0 and board_data[i][j] < 199: #if there is a mine that has not been flagged yet, show it
                 if i == y and j == x:   #this is the clicked mine, so it has red background
-                    cells[i][j].config(image=clicked_mine_image, width = 16, height = 16)
+                    cells[i][j].config(image=clicked_mine_img, width = 16, height = 16)
                 else:
-                    cells[i][j].config(image=mine_image, width = 16, height = 16) #other mines
+                    cells[i][j].config(image=mine_img, width = 16, height = 16) #other mines
     
     
 cells = [[tk.Label(   #建立cell陣列
